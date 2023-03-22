@@ -6,7 +6,6 @@ import dts from 'vite-plugin-dts';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
     dts({
       insertTypesEntry: true,
     }),
@@ -15,7 +14,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'lib/index.ts'),
       name: 'graasp-pyodide',
-      fileName: 'index',
+      fileName: (format) => `index.${format}.js`,
     },
   },
 });

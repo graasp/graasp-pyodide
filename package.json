@@ -2,9 +2,12 @@
   "name": "graasp-pyodide",
   "version": "0.0.0",
   "main": "./dist/index.umd.cjs",
-  "module": "./dist/index.js",
+  "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
