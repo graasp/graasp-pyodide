@@ -41,6 +41,7 @@ will always be called with append=false.
 import { PyodideStatus } from './types';
 import { getWrappedWorkerCode } from './utils';
 import { getPythonWorkerCode } from './webWorkerLocal';
+import FullWorker from './fullWorker.js?worker';
 
 class PyWorker {
   workerURL: string;
@@ -146,9 +147,7 @@ class PyWorker {
     try {
       // if this line errors in tests, make sure you are not importing this module in your tests,
       // the "import.meta.url" syntax is not compatible with server-side code (used by tests)
-      this.worker = new Worker(new URL('./fullWorker.js', import.meta.url), {
-        type: 'module',
-      });
+      this.worker = new FullWorker();
     } catch (error) {
       console.log(error);
       const wrappedWorkerCode = `data://application/javascript,${getWrappedWorkerCode(
