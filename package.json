@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "yarn build",
+    "prepack": "yarn build"
   },
   "dependencies": {
     "react": "^18.2.0",
