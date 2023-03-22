@@ -39,12 +39,12 @@ will always be called with append=false.
 */
 
 import { PyodideStatus } from './types';
-import { getWrappedWorkerCode } from './utils';
-import { getPythonWorkerCode } from './webWorkerLocal';
-import FullWorker from './fullWorker.js?worker';
+// import { getWrappedWorkerCode } from './utils';
+// import { getPythonWorkerCode } from './webWorkerLocal';
+import FullWorker from './fullWorker.js?worker&inline';
 
 class PyWorker {
-  workerURL: string;
+  workerURL?: string;
   worker: Worker | null;
   isRunning: boolean;
   isSuspended: boolean;
@@ -87,8 +87,7 @@ class PyWorker {
    * @param workerURL url of the worker code, uses default code if omitted
    */
   constructor(workerURL?: string) {
-    this.workerURL =
-      workerURL || `data://application/javascript,${getPythonWorkerCode()}`;
+    this.workerURL = workerURL;
     this.worker = null;
     this.isRunning = false;
     this.isSuspended = false;
@@ -150,13 +149,12 @@ class PyWorker {
       this.worker = new FullWorker();
     } catch (error) {
       console.log(error);
-      const wrappedWorkerCode = `data://application/javascript,${getWrappedWorkerCode(
-        this.workerURL,
-      )};`;
-      this.worker = new Worker(wrappedWorkerCode);
+      if (this.workerURL) {
+        this.worker = new Worker(this.workerURL);
+      }
     }
     this.isRunning = false;
-    this.worker.addEventListener('message', (ev) => {
+    this.worker?.addEventListener('message', (ev) => {
       switch (ev.data.cmd) {
         case 'print':
           this.printToOutput(ev.data.data);
@@ -201,7 +199,7 @@ class PyWorker {
           break;
       }
     });
-    this.worker.addEventListener('error', (ev) => {
+    this.worker?.addEventListener('error', (ev) => {
       if (this.onError) {
         this.onError(ev);
       } else {
@@ -219,7 +217,7 @@ class PyWorker {
     };
     console.log('preloaded packages in PyWorker: ', this.preLoadedPackages);
 
-    this.worker.postMessage(JSON.stringify(msg));
+    this.worker?.postMessage(JSON.stringify(msg));
   }
 
   handleTimeout() {
