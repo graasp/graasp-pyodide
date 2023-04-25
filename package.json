@@ -1,0 +1,34 @@
+{
+  "name": "graasp-pyodide",
+  "version": "0.0.0",
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "prepare": "yarn build",
+    "prepack": "yarn build"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.5",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "path": "^0.12.7",
+    "prettier": "^2.8.6",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0",
+    "vite-plugin-dts": "2.1.0"
+  },
+  "packageManager": "yarn@3.5.0"
+}
