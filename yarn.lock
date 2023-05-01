@@ -432,6 +432,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@graasp/pyodide@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@graasp/pyodide@workspace:."
+  dependencies:
+    "@types/node": ^18.15.5
+    "@types/react": ^18.0.28
+    "@types/react-dom": ^18.0.11
+    "@vitejs/plugin-react": ^3.1.0
+    path: ^0.12.7
+    prettier: ^2.8.6
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    typescript: ^4.9.3
+    vite: ^4.2.0
+    vite-plugin-dts: 2.1.0
+  languageName: unknown
+  linkType: soft
+
 "@jridgewell/gen-mapping@npm:^0.1.0":
   version: 0.1.1
   resolution: "@jridgewell/gen-mapping@npm:0.1.1"
@@ -1337,24 +1355,6 @@ __metadata:
   checksum: 67051a45eca3db904aee189dfc7cd53c20c7d881679c93f6146ddd4c9f4ab2268e68a919df740d39c71f4445d2b38ee360fc234428baea1dbdfe68bbcb46979e
   languageName: node
   linkType: hard
-
-"graasp-pyodide@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "graasp-pyodide@workspace:."
-  dependencies:
-    "@types/node": ^18.15.5
-    "@types/react": ^18.0.28
-    "@types/react-dom": ^18.0.11
-    "@vitejs/plugin-react": ^3.1.0
-    path: ^0.12.7
-    prettier: ^2.8.6
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    typescript: ^4.9.3
-    vite: ^4.2.0
-    vite-plugin-dts: 2.1.0
-  languageName: unknown
-  linkType: soft
 
 "graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.6":
   version: 4.2.11

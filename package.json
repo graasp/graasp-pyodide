@@ -1,5 +1,5 @@
 {
-  "name": "graasp-pyodide",
+  "name": "@graasp/pyodide",
   "version": "1.0.0",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.es.js",
